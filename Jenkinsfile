@@ -24,7 +24,7 @@ pipeline {
         }
         stage ('upload artifact to s3') {
             steps {
-              s3Upload(file:'**/target/*.war', bucket:'artifact-bucket2.0', path:'**/target/*.war')
+                s3Upload consoleLogLevel: 'INFO', dontSetBuildResultOnFailure: false, dontWaitForConcurrentBuildCompletion: false, entries: [[bucket: 'artifact-bucket2.0', excludedFile: '', flatten: false, gzipFiles: false, keepForever: false, managedArtifacts: false, noUploadOnFailure: false, selectedRegion: 'us-east-1', showDirectlyInBrowser: false, sourceFile: '**/target/*.war', storageClass: 'STANDARD', uploadFromSlave: false, useServerSideEncryption: false]], pluginFailureResultConstraint: 'FAILURE', profileName: 'S3artifactupload', userMetadata: []
             }
         }
     }

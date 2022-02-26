@@ -22,5 +22,8 @@ pipeline {
                sh 'mvn install'
             }
         }
+        stage ('upload artifact to s3') {
+            s3Upload(file:'**/target/*.war', bucket:'artifact-bucket2.0', path:'**/target/*.war')
+        }
     }
 }

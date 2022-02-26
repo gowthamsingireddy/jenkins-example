@@ -23,7 +23,9 @@ pipeline {
             }
         }
         stage ('upload artifact to s3') {
-            s3Upload(file:'**/target/*.war', bucket:'artifact-bucket2.0', path:'**/target/*.war')
+            steps {
+              s3Upload(file:'**/target/*.war', bucket:'artifact-bucket2.0', path:'**/target/*.war')
+            }
         }
     }
 }
